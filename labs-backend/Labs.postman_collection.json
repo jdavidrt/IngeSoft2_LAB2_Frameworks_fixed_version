@@ -1,0 +1,214 @@
+{
+	"info": {
+		"_postman_id": "f486d9b8-d14f-4be3-a12f-af30d2730ebd",
+		"name": "Labs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "RoleController",
+			"item": [
+				{
+					"name": "Get all roles",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/roles",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"roles"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "UserController",
+			"item": [
+				{
+					"name": "Register student",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"names\": \"Usuario Estudiante\",\n\t\"surnames\": \"Prueba Temporal\",\n\t\"username\": \"student\",\n\t\"password\": \"12345678\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/registro/nuevo-usuario/rol/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"registro",
+								"nuevo-usuario",
+								"rol",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register teacher",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"names\": \"Usuario Profesor\",\n\t\"surnames\": \"Prueba Temporal\",\n\t\"username\": \"teacher\",\n\t\"password\": \"87654321\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/registro/nuevo-usuario/rol/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"registro",
+								"nuevo-usuario",
+								"rol",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Associate role for existing user",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "access-token",
+								"value": "de82d95f-2d93-45a4-8bbe-6dff7f25a4dd",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"password\": \"12345678\"\n}\n\n\n\n\n"
+						},
+						"url": {
+							"raw": "localhost:8080/registro/nuevo-rol/1?access_token=",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"registro",
+								"nuevo-rol",
+								"1"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authentication",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "secret",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "soft-eng-ii",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "teacher",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "87654321",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/oauth/token",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -45,6 +45,20 @@ export default new Router({
           component: Roles
         }
       ]
+    },
+    {
+    path: "/profesor",
+      name: "docente",
+      component: Home,
+      children: [
+        {
+          path: "crear-curso",
+          name: "add-course",
+          component: AddCourse
+        }
+      ]
     }
+    
+
   ]
 })
